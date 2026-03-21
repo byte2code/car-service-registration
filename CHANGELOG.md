@@ -2,6 +2,21 @@
 
 All notable changes to this project are documented in this file.
 
+## [v2.0.0] - 2026-03-21
+
+### Summary
+Second version of the Car Service Registration project that adds form submission handling and a basic service/repository layer.
+
+### Highlights
+- Added `CarRegistrationService` and `CarDAO` for in-memory registration processing.
+- Updated the registration controller to bind form data and show a success page.
+- Added a real registration JSP form and a success JSP.
+- Expanded tests for controller submission, repository behavior, and service logic.
+- Updated the README for the new registration flow.
+
+### Notes
+This version evolves the project from simple page navigation into a minimal working registration workflow.
+
 ## [v1.0.0] - 2026-03-21
 
 ### Summary

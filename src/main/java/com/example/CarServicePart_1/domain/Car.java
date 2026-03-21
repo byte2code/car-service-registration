@@ -1,4 +1,5 @@
 package com.example.CarServicePart_1.domain;
+import com.example.CarServicePart_1.repository.CarDAO;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,10 +16,20 @@ public class Car implements Vehicle{
     private String carDetails;
     private String carWork;
     private Integer carId;
+    private final CarDAO carDAO;
+
+    public Car(CarDAO carDAO) {
+        this.carDAO = carDAO;
+    }
 
 
     @Override
     public Boolean saveVehicleDetails() {
+        if (registerationNumber == null || carName == null || carDetails == null || carWork == null) {
+            return false;
+        }
+
+        carId = carDAO.save(this);
         return true;
     }
 
