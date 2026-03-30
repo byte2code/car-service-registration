@@ -1,6 +1,6 @@
 # Car Service Registration
 
-Spring Boot MVC learning project for car-service registration with JSP views, in-memory persistence, and a simple support follow-up flow.
+Spring Boot MVC learning project for car-service registration with JSP views, in-memory persistence, and post-registration support and attendant follow-up pages.
 
 ## Overview
 
@@ -13,7 +13,7 @@ This project showcases how a basic service registration workflow can be built us
 - Controller-driven navigation and form handling
 - Domain, service, and repository layer separation
 - In-memory data persistence for submitted registrations
-- Registration success flow with support-page navigation
+- Registration success flow with support and attendant follow-up pages
 - Unit and MVC-slice tests for key behaviors
 
 ## Tech Stack
@@ -45,6 +45,7 @@ car-service-registration/
     │   ├── resources/
     │   │   └── application.yml
     │   └── webapp/WEB-INF/jsp/
+    │       ├── attendent.jsp
     │       ├── carregister.jsp
     │       ├── success.jsp
     │       ├── support.jsp
@@ -58,7 +59,7 @@ car-service-registration/
 - `domain/`: core vehicle and car model behavior
 - `repository/`: in-memory save logic
 - `service/`: registration workflow coordination
-- `web/`: controllers for welcome, registration, success, and support pages
+- `web/`: controllers for welcome, registration, success, support, and attendant pages
 - `webapp/WEB-INF/jsp/`: JSP views used by the MVC flow
 
 ## How to Run
@@ -79,6 +80,7 @@ flowchart TD
     D --> E["CarDAO stores registration in memory"]
     E --> F["Redirect to /success?id={carId}"]
     F --> G["Open /support?id={carId}"]
+    F --> H["Open /attendent/{carId}"]
 ```
 
 ## Sample Output
@@ -89,13 +91,14 @@ Because this is a web MVC project, the primary output is page-based:
 - Registration form for entering car details
 - Success page showing the generated registration ID
 - Support page confirming the submitted car ID
+- Attendant page showing assigned service contact details
 
 ## Learning Highlights
 
 - Demonstrates the transition from static page navigation to a multi-step registration workflow
 - Shows how service and repository layers improve structure in Spring MVC apps
 - Uses simple tests to validate routing, registration behavior, and repository logic
-- Preserves earlier project evolution through Git tags: `v1.0.0` and `v2.0.0`
+- Preserves earlier project evolution through Git tags: `v1.0.0`, `v2.0.0`, and `v3.0.0`
 
 ## GitHub Metadata
 

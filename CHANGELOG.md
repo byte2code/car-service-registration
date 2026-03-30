@@ -2,6 +2,23 @@
 
 All notable changes to this project are documented in this file.
 
+## [v4.0.0] - 2026-03-30
+
+### Summary
+Fourth version of the Car Service Registration project that extends the post-registration experience with an attendant page while preserving the existing layered MVC flow.
+
+### Highlights
+
+- Added an `AttendentController` with a route-based attendant details page.
+- Added an attendant JSP and linked it from the registration success page.
+- Kept the success and support flow introduced in `v3`.
+- Added controller coverage for the new attendant route.
+- Updated the README to reflect the extended user journey.
+
+### Notes
+
+This version expands the showcase from registration confirmation into a slightly richer service follow-up experience.
+
 ## [v3.0.0] - 2026-03-30
 
 ### Summary

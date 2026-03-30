@@ -12,6 +12,8 @@
     <p>Registration ID: ${carId}</p>
     <a href="/support?id=${carId}">Contact support</a>
     <br><br>
+    <a href="/attendent/${carId}">View attendant</a>
+    <br><br>
     <a href="/register">Register another car</a>
 </body>
 </html>
