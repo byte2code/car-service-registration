@@ -1,78 +1,103 @@
 # Car Service Registration
 
-Car Service Registration is a Java 17 Spring Boot MVC project that serves JSP pages for a car-service registration flow and now includes a simple service and repository layer for saving submitted vehicle details in memory.
+Spring Boot MVC learning project for car-service registration with JSP views, in-memory persistence, and a simple support follow-up flow.
 
-## GitHub Metadata
+## Overview
 
-- Suggested repository description: `Java 17 Spring Boot MVC project for car-service registration with JSP pages, service/repository layers, and in-memory persistence.`
-- Suggested topics: `java`, `java-17`, `spring-boot`, `spring-mvc`, `maven`, `jsp`, `junit5`, `web-application`, `car-service`, `learning-project`, `portfolio-project`
+This project showcases how a basic service registration workflow can be built using Spring Boot MVC, JSP pages, and layered application design. It is organized as a compact learning project that demonstrates request handling, form submission, service orchestration, repository interaction, and page-based user flow in a beginner-friendly way.
+
+## Concepts and Features Covered
+
+- Spring Boot MVC application setup
+- JSP-based view rendering
+- Controller-driven navigation and form handling
+- Domain, service, and repository layer separation
+- In-memory data persistence for submitted registrations
+- Registration success flow with support-page navigation
+- Unit and MVC-slice tests for key behaviors
 
 ## Tech Stack
 
 - Java 17
-- Maven
-- Spring Boot
+- Spring Boot 3
 - Spring MVC
 - JSP / JSTL
+- Maven
 - JUnit 5
 
-## Project Overview
+## Project Structure
 
-The application models a small car-service registration starter:
+```text
+car-service-registration/
+├── CHANGELOG.md
+├── README.md
+├── pom.xml
+├── mvnw
+├── mvnw.cmd
+└── src/
+    ├── main/
+    │   ├── java/com/example/CarServicePart_1/
+    │   │   ├── CarRegisterationPart_1Application.java
+    │   │   ├── domain/
+    │   │   ├── repository/
+    │   │   ├── service/
+    │   │   └── web/
+    │   ├── resources/
+    │   │   └── application.yml
+    │   └── webapp/WEB-INF/jsp/
+    │       ├── carregister.jsp
+    │       ├── success.jsp
+    │       ├── support.jsp
+    │       └── welcome.jsp
+    └── test/java/com/example/CarServicePart_1/
+        ├── repository/
+        ├── service/
+        └── web/
+```
 
-- `WelcomePageConroller` serves the welcome page.
-- `RegisterController` serves the registration form and processes submitted registration data.
-- `CarRegistrationService` coordinates registration through the `Vehicle` domain model.
-- `CarDAO` stores submitted cars in memory and returns generated ids.
-- `Car` implements the `Vehicle` interface and stores registration details, car details, and work information.
-- JSP views under `src/main/webapp/WEB-INF/jsp` back the page flow.
+- `domain/`: core vehicle and car model behavior
+- `repository/`: in-memory save logic
+- `service/`: registration workflow coordination
+- `web/`: controllers for welcome, registration, success, and support pages
+- `webapp/WEB-INF/jsp/`: JSP views used by the MVC flow
 
-## Current Flow
+## How to Run
 
-1. The application starts in `CarRegisterationPart_1Application`.
-2. Spring Boot serves the `/welcome` route for the welcome JSP.
-3. The `/register` route serves the registration JSP with a new vehicle model.
-4. The user submits the form to `/done`.
-5. The service layer builds the vehicle and asks the repository layer to save it.
-6. The success JSP is shown when the registration succeeds.
+1. Clone the repository.
+2. Open a terminal in the project root.
+3. Run `mvn test` to verify the project.
+4. Run `mvn spring-boot:run`.
+5. Open `http://localhost:8080/welcome` in the browser.
 
 ## Flow Diagram
 
 ```mermaid
 flowchart TD
-    A["Start: CarRegisterationPart_1Application.main()"] --> B["Launch Spring Boot MVC app"]
-    B --> C["GET /welcome"]
-    C --> D["Render welcome.jsp"]
-    D --> E["GET /register"]
-    E --> F["Render carregister.jsp with vehicle model"]
-    F --> G["POST /done with car details"]
-    G --> H["CarRegistrationService builds vehicle"]
-    H --> I["CarDAO saves vehicle in memory"]
-    I --> J["Render success.jsp"]
+    A["Open /welcome"] --> B["Navigate to /register"]
+    B --> C["Submit car registration form"]
+    C --> D["CarRegistrationService processes request"]
+    D --> E["CarDAO stores registration in memory"]
+    E --> F["Redirect to /success?id={carId}"]
+    F --> G["Open /support?id={carId}"]
 ```
 
-## How To Run
+## Sample Output
 
-```bash
-mvn test
-mvn package
-java -jar target/car-service-registration-0.0.1-SNAPSHOT.jar
-```
+Because this is a web MVC project, the primary output is page-based:
 
-Then open [http://localhost:8080/welcome](http://localhost:8080/welcome).
+- Welcome page for starting the flow
+- Registration form for entering car details
+- Success page showing the generated registration ID
+- Support page confirming the submitted car ID
 
-## Known Limitations
+## Learning Highlights
 
-- Registrations are stored only in memory and are lost when the app stops.
-- There is no database or edit/update workflow yet.
-- The success flow is covered, but full browser-level form rendering was not live-tested in this environment.
+- Demonstrates the transition from static page navigation to a multi-step registration workflow
+- Shows how service and repository layers improve structure in Spring MVC apps
+- Uses simple tests to validate routing, registration behavior, and repository logic
+- Preserves earlier project evolution through Git tags: `v1.0.0` and `v2.0.0`
 
-## Why This Repo Exists
+## GitHub Metadata
 
-This repository is intended as a learning and portfolio project that shows:
-
-- Spring Boot MVC setup with JSP rendering
-- controller-based route and form handling
-- simple service/repository layering
-- domain modeling with interfaces
-- automated tests for route mapping, domain behavior, and registration logic
+- Suggested repository description: `Java 17 Spring Boot MVC project that models a car-service registration workflow with JSP views, layered design, and in-memory persistence.`
+- Suggested topics: `java`, `java-17`, `spring-boot`, `spring-mvc`, `maven`, `jsp`, `junit5`, `mvc`, `car-service`, `learning-project`, `portfolio-project`

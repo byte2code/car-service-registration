@@ -1,7 +1,6 @@
 package com.example.CarServicePart_1.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +17,7 @@ class CarTest {
         assertEquals("Swift", car.getCarName());
         assertEquals("Hatchback", car.getCarDetails());
         assertEquals("Oil Change", car.getCarWork());
-        assertTrue(car.saveVehicleDetails());
+        assertEquals(1, car.saveVehicleDetails());
         assertEquals(1, car.getCarId());
     }
 

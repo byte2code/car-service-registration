@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class RegisterController {
@@ -27,13 +28,19 @@ public class RegisterController {
 
     @PostMapping("/done")
     public String getResponsePage(@ModelAttribute("vehicle") Car car) {
-        boolean isRegistered = registration.registerCar(
+        int carId = registration.registerCar(
                 car.getRegisterationNumber(),
                 car.getCarName(),
                 car.getCarDetails(),
                 car.getCarWork()
         );
 
-        return isRegistered ? "success" : "carregister";
+        return carId != -1 ? "redirect:/success?id=" + carId : "carregister";
+    }
+
+    @GetMapping("/success")
+    public String getSuccessPage(@RequestParam("id") Integer carId, Model model) {
+        model.addAttribute("carId", carId);
+        return "success";
     }
 }

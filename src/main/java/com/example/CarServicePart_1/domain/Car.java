@@ -24,13 +24,13 @@ public class Car implements Vehicle{
 
 
     @Override
-    public Boolean saveVehicleDetails() {
+    public int saveVehicleDetails() {
         if (registerationNumber == null || carName == null || carDetails == null || carWork == null) {
-            return false;
+            return -1;
         }
 
         carId = carDAO.save(this);
-        return true;
+        return carId;
     }
 
 //    @Override

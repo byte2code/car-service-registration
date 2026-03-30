@@ -7,8 +7,11 @@
     <title>Registration Success</title>
 </head>
 <body>
-    <h2>Registration done successful!</h2>
+    <h2>Registration done successfully!</h2>
     <p>Your car has been successfully registered.</p>
+    <p>Registration ID: ${carId}</p>
+    <a href="/support?id=${carId}">Contact support</a>
+    <br><br>
     <a href="/register">Register another car</a>
 </body>
 </html>
